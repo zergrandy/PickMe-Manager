@@ -197,6 +197,7 @@
                     <div class="row">
                       <div class="col-lg-5 col-md-6 col-sm-3">
                         <select id="homeChoose" class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="首頁場景">
+                          <option value="">請選擇</option>
                           <option value="13">S13</option>
                           <option value="131">S13外國人</option>
                           <option value="15">S15</option>
@@ -226,6 +227,7 @@
                     <div class="row">
                       <div class="col-lg-5 col-md-6 col-sm-3">
                         <select id="messageChoose" class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="聊天列表畫面">
+                          <option value="">請選擇</option>
                           <option value="15">S15</option>
                           <option value="25">S25</option>
                           <option value="73">S73</option>
@@ -436,7 +438,7 @@
     function homeChooseBtn(){
 
       var vv = $('#homeChoose').val();
-      if(vv = ''){
+      if(vv == ''){
         alert("你尚未選擇場景");
         return;
       }
@@ -496,7 +498,7 @@
     function messageChooseBtn(){
 
       var vv = $('#messageChoose').val();
-      if(vv = ''){
+      if(vv == ''){
         alert("你尚未選擇場景");
         return;
       }
@@ -586,7 +588,7 @@
     function deleteMtBtn(){
       var valueStr = $('#deleteCountMt').val();
       
-      if(valueStr = ''){
+      if(valueStr == ''){
         alert("你尚未輸入數字");
         return;
       }
@@ -637,7 +639,7 @@
 
     function deleteMcBtn(){
       var valueStr = $('#deleteCountMc').val();
-      if(valueStr = ''){
+      if(valueStr == ''){
         alert("你尚未輸入數字");
         return;
       }
