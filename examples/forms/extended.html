@@ -57,15 +57,8 @@
         </div>
         <ul class="nav">
           <li >
-            <a href="../dashboard.html">
-              <i class="nc-icon nc-bank"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-
-          <li >
             <a href="../forms/extended.html">
-              <p>Extended Forms</p>
+              <p>功能切換頁面</p>
             </a>
           </li>
         </ul>
@@ -147,13 +140,13 @@
           <div class="col-md-6">
             <div class="card ">
               <div class="card-header ">
-                <h5 class="card-title">刪除訊息 馬丁123-</h5>
+                <h5 class="card-title">刪除訊息 馬丁-</h5>
               </div>
               <div class="card-body ">
                 <div class="form-group">
-                  <input type="text" class="form-control timepicker" value="10/05/2018">
+                  <input id="deleteCountMt"  type="number" class="form-control" value="10">
                 </div>
-                <button class="btn btn-danger" onclick="demo.showSwal('warning-message-and-confirmation')">
+                <button id="deleteMtBtn" class="btn btn-danger" onclick="deleteMtBtn()">
                   <i class="nc-icon nc-simple-remove"></i>
                   Danger
                 </button>
@@ -167,9 +160,9 @@
               </div>
               <div class="card-body ">
                 <div class="form-group">
-                  <input type="text" class="form-control timepicker" value="10/05/2018">
+                  <input id="deleteCountMc" type="number" class="form-control" value="10">
                 </div>
-                <button class="btn btn-danger" onclick="demo.showSwal('warning-message-and-confirmation')">
+                <button id="deleteMcBtn" class="btn btn-danger" onclick="deleteMcBtn()">
                   <i class="nc-icon nc-simple-remove"></i>
                   Danger
                 </button>
@@ -186,24 +179,36 @@
                     <h4 class="card-title">上下線控制</h4>
                       <div class="col-md-6">
                         <p class="category">馬丁上下線控制</p>
-                        <input class="bootstrap-switch" type="checkbox" data-toggle="switch" checked="" data-on-color="success" data-off-color="danger" data-on-label="上線" data-off-label="下線">
+                        
+                        <input name="OnlineMtToggle" id="OnlineMtToggle" class="bootstrap-switch" type="checkbox" data-toggle="switch"  data-on-color="success" data-off-color="danger" data-on-label="上線" data-off-label="下線">
+                        <!--
+                        <input name="OnlineMtToggle" id="OnlineMtToggle" type="checkbox">
+                        -->
+                        <input id="OnlineMtToggleHide" type="hidden" value="">
+                      
                       </div>
                       <div class="col-md-6">
                         <p class="category">麥可上下線控制</p>
-                        <input class="bootstrap-switch" type="checkbox" data-toggle="switch" checked="" data-on-color="success" data-off-color="danger" data-on-label="上線" data-off-label="下線">
+                        <input id="OnlineMcToggle" class="bootstrap-switch" type="checkbox" data-toggle="switch"  data-on-color="success" data-off-color="danger" data-on-label="上線" data-off-label="下線">
                       </div>
                   </div>
                   <div class="col-md-6">
                     <h4 class="card-title">選擇首頁畫面場景</h4>
                     <div class="row">
                       <div class="col-lg-5 col-md-6 col-sm-3">
-                        <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="首頁場景">
-                          <option value="1">台灣</option>
-                          <option value="2">巴黎1</option>
-                          <option value="3">巴黎2</option>
+                        <select id="homeChoose" class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="首頁場景">
+                          <option value="13">S13</option>
+                          <option value="131">S13外國人</option>
+                          <option value="15">S15</option>
+                          <option value="20">S20</option>
+                          <option value="43">S43</option>
+                          <option value="64">S64</option>
+                          <option value="72">S72</option>
+                          <option value="83">S83</option>
+                          <option value="107">S107</option>
                         </select>
                       </div>
-                      <button class="btn btn-success" onclick="ssss()">
+                      <button id="homeChooseBtn" class="btn btn-success" onclick="homeChooseBtn()">
                         按我確認送出
                       </button>
                     </div>
@@ -211,20 +216,24 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <h4 class="card-title">Tags</h4>
-                    <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="tagsinput" data-role="tagsinput" data-color="primary" />
+                    <!--
+                      <h4 class="card-title">Tags</h4>
+                      <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="tagsinput" data-role="tagsinput" data-color="primary" />
+                    -->
                   </div>
                   <div class="col-md-6">
                     <h4 class="card-title">選擇聊天列表畫面場景</h4>
                     <div class="row">
                       <div class="col-lg-5 col-md-6 col-sm-3">
-                        <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="首頁場景">
-                          <option value="1">台灣</option>
-                          <option value="2">巴黎1</option>
-                          <option value="3">巴黎2</option>
+                        <select id="messageChoose" class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="聊天列表畫面">
+                          <option value="15">S15</option>
+                          <option value="25">S25</option>
+                          <option value="73">S73</option>
+                          <option value="80">S80</option>
+                          <option value="83">S83</option>
                         </select>
                       </div>
-                      <button class="btn btn-success" onclick="ssss()">
+                      <button id="messageChooseBtn" class="btn btn-success" onclick="messageChooseBtn()">
                         按我確認送出
                       </button>
                     </div>
@@ -307,16 +316,383 @@
       }
     });
 
-    function ssss(){
-      Swal.fire({
-        title: '成功送出!',
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////上下線控制/////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    var martinOnlineInitDone = false;
+    var michaelOnlineInitDone = false;
+
+    $('#OnlineMtToggle').on('switchChange.bootstrapSwitch', function (event, state) {
+      if(martinOnlineInitDone){
+        var mtIsOnline = $('#OnlineMtToggle').is(":checked");
+        var valueStr = 0;
+
+        if(mtIsOnline)
+          valueStr = 1;
+        else
+          valueStr = 0;
+
+        //POST
+        var settings = {
+            "url": "http://114.34.143.162:9880/api/v1/temp",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+              "Content-Type": "text/plain"
+            },
+            "data": "{\r\n    \"Key\": \"martinOnline\",\r\n    \"Value\": " + valueStr + ",\r\n    \"Comment\": 0\r\n}",
+          };
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
+      }      
+    }); 
+
+    $('#OnlineMcToggle').on('switchChange.bootstrapSwitch', function (event, state) {
+      if(michaelOnlineInitDone){
+        var mcIsOnline = $('#OnlineMcToggle').is(":checked");
+        var valueStr = 0;
+
+        if(mcIsOnline)
+          valueStr = 1;
+        else
+          valueStr = 0;
+
+        //POST
+        var settings = {
+          "url": "http://114.34.143.162:9880/api/v1/temp",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "data": "{\r\n    \"Key\": \"michaelOnline\",\r\n    \"Value\": " + valueStr + ",\r\n    \"Comment\": 0\r\n}",
+        };
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      }      
+    }); 
+
+    //取得初始資料
+    var martinOnline = {
+      "url": "http://114.34.143.162:9880/api/v1/temp?Key=martinOnline",
+      "method": "GET",
+      "timeout": 0,
+    };
+
+    $.ajax(martinOnline).done(function (response) {
+      
+      console.log(response.data.Value);
+      var vv = response.data.Value;
+      if(vv == 1){
+        $('#OnlineMtToggle').trigger('click');
+      }
+      martinOnlineInitDone = true;
+    });
+    
+    var michaelOnline = {
+      "url": "http://114.34.143.162:9880/api/v1/temp?Key=michaelOnline",
+      "method": "GET",
+      "timeout": 0,
+    };
+
+    $.ajax(michaelOnline).done(function (response) {
+      
+      console.log(response.data.Value);
+      var vv = response.data.Value;
+      if(vv == 1){
+        $('#OnlineMcToggle').trigger('click');
+      }
+      michaelOnlineInitDone = true;
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////上下線控制/////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////首頁畫面選擇，聊天列表畫面選擇///////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    
+    var homeChooseSetting = {
+      "url": "http://114.34.143.162:9880/api/v1/temp?Key=homeScenes",
+      "method": "GET",
+      "timeout": 0,
+    };
+
+    $.ajax(homeChooseSetting).done(function (response) {
+      console.log(response.data.Value);
+      var vv = response.data.Value;
+      $('#homeChoose').val(vv);
+      $('.selectpicker').selectpicker('refresh');
+    });
+
+
+    function homeChooseBtn(){
+
+      var vv = $('#homeChoose').val();
+      if(vv = ''){
+        alert("你尚未選擇場景");
+        return;
+      }
+      
+      var valueStr =$('#homeChoose').val();
+
+      //POST
+      var settings = {
+          "url": "http://114.34.143.162:9880/api/v1/temp",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "data": "{\r\n    \"Key\": \"homeScenes\",\r\n    \"Value\": " + valueStr + ",\r\n    \"Comment\": 0\r\n}",
+      };
+      console.log(settings);
+      $.ajax(settings)
+      .done(function (response) {
+        console.log(response);
+        Swal.fire({
+          title: '成功送出!',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          },
+          buttonsStyling: false
+
+        })
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) { 
+        Swal.fire({
+          title: '場景未修改，或送出失敗!',
+          customClass: {
+            confirmButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+
+        })
+       });
+    }
+
+    //聊天列表
+    var messageChooseSetting = {
+      "url": "http://114.34.143.162:9880/api/v1/temp?Key=chatScenes",
+      "method": "GET",
+      "timeout": 0,
+    };
+
+    $.ajax(messageChooseSetting).done(function (response) {
+      console.log(response.data.Value);
+      var vv = response.data.Value;
+      $('#messageChoose').val(vv);
+      $('.selectpicker').selectpicker('refresh');
+    });
+
+
+    function messageChooseBtn(){
+
+      var vv = $('#messageChoose').val();
+      if(vv = ''){
+        alert("你尚未選擇場景");
+        return;
+      }
+      
+      var valueStr =$('#messageChoose').val();
+
+      //POST
+      var settings = {
+          "url": "http://114.34.143.162:9880/api/v1/temp",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "data": "{\r\n    \"Key\": \"chatScenes\",\r\n    \"Value\": " + valueStr + ",\r\n    \"Comment\": 0\r\n}",
+      };
+      console.log(settings);
+      $.ajax(settings)
+      .done(function (response) {
+        console.log(response);
+        Swal.fire({
+          title: '成功送出!',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          },
+          buttonsStyling: false
+
+        })
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) { 
+        Swal.fire({
+          title: '場景未修改，或送出失敗!',
+          customClass: {
+            confirmButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+
+        })
+       });
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////首頁畫面選擇，聊天列表畫面選擇///////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////刪除訊息////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    function deleteMsg(ChatRoomId, count){
+      //POST
+      var settings = {
+          "url": "http://114.34.143.162:9880/api/v1/message",
+          "method": "DELETE",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "data": "{\r\n    \"ChatRoomId\": "+ChatRoomId+",\r\n    \"Count\": "+count+"\r\n}",
+        };
+        console.log(settings);
+        $.ajax(settings)
+        .done(function (response) {
+          console.log(response);
+          Swal.fire({
+            title: '成功刪除!',
+            customClass: {
+              confirmButton: 'btn btn-success'
+            },
+            buttonsStyling: false
+
+          })
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) { 
+          Swal.fire({
+            title: '送出失敗，請重新嘗試!',
+            customClass: {
+              confirmButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+
+          })
+        });
+    }
+
+    function deleteMtBtn(){
+      var valueStr = $('#deleteCountMt').val();
+      
+      if(valueStr = ''){
+        alert("你尚未輸入數字");
+        return;
+      }
+
+      //SWAL 選擇
+      const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success'
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
         },
         buttonsStyling: false
-
       })
+
+      swalWithBootstrapButtons.fire({
+        title: '確定要刪除嗎?',
+        text: "你無法回復此動作造成的影響!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '是, 刪除!',
+        cancelButtonText: '不, 取消刪除!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+
+          //刪除訊息FUNC
+          var vv = $('#deleteCountMt').val();
+          console.log(vv);
+          deleteMsg(1, vv);
+
+          swalWithBootstrapButtons.fire(
+            '刪除!',
+            '訊息已被刪除.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            '已取消',
+            '訊息尚未刪除 :)',
+            'error'
+          )
+        }
+      })      
+      
     }
+
+    function deleteMcBtn(){
+      var valueStr = $('#deleteCountMc').val();
+      if(valueStr = ''){
+        alert("你尚未輸入數字");
+        return;
+      }
+
+      //SWAL 選擇
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: '確定要刪除嗎?',
+        text: "你無法回復此動作造成的影響!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '是, 刪除!',
+        cancelButtonText: '不, 取消刪除!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+
+          //刪除訊息FUNC
+          var vv = $('#deleteCountMc').val();
+          console.log(vv);
+          deleteMsg(2, vv);
+
+          swalWithBootstrapButtons.fire(
+            '刪除!',
+            '訊息已被刪除.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            '已取消',
+            '訊息尚未刪除 :)',
+            'error'
+          )
+        }
+      })
+
+    }
+    
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////刪除訊息////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
   </script>
 </body>
 
