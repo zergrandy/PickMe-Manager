@@ -217,10 +217,19 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <!--
-                      <h4 class="card-title">Tags</h4>
-                      <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="tagsinput" data-role="tagsinput" data-color="primary" />
-                    -->
+                    <h4 class="card-title">選擇喜歡列表畫面場景</h4>
+                    <div class="row">
+                      <div class="col-lg-5 col-md-6 col-sm-3">
+                        <select id="likeChoose" class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="喜歡列表畫面">
+                          <option value="">請選擇</option>
+                          <option value="22">S22</option>
+                          <option value="73">S73</option>
+                        </select>
+                      </div>
+                      <button id="likeChooseBtn" class="btn btn-success" onclick="likeChooseBtn()">
+                        按我確認送出
+                      </button>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <h4 class="card-title">選擇聊天列表畫面場景</h4>
@@ -233,6 +242,7 @@
                           <option value="73">S73</option>
                           <option value="80">S80</option>
                           <option value="83">S83</option>
+                          <option value="107">S107</option>
                         </select>
                       </div>
                       <button id="messageChooseBtn" class="btn btn-success" onclick="messageChooseBtn()">
@@ -514,6 +524,66 @@
             "Content-Type": "text/plain"
           },
           "data": "{\r\n    \"Key\": \"chatScenes\",\r\n    \"Value\": " + valueStr + ",\r\n    \"Comment\": 0\r\n}",
+      };
+      console.log(settings);
+      $.ajax(settings)
+      .done(function (response) {
+        console.log(response);
+        Swal.fire({
+          title: '成功送出!',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          },
+          buttonsStyling: false
+
+        })
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) { 
+        Swal.fire({
+          title: '場景未修改，或送出失敗!',
+          customClass: {
+            confirmButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+
+        })
+       });
+    }
+
+    //喜歡列表
+    var likeChooseSetting = {
+      "url": "https://chatapp.jujujujuicy.com/api/v1/temp?Key=likeScenes",
+      "method": "GET",
+      "timeout": 0,
+    };
+
+    $.ajax(likeChooseSetting).done(function (response) {
+      console.log(response.data.Value);
+      var vv = response.data.Value;
+      $('#likeChoose').val(vv);
+      $('.selectpicker').selectpicker('refresh');
+    });
+
+
+    function likeChooseBtn(){
+
+      var vv = $('#likeChoose').val();
+      if(vv == ''){
+        alert("你尚未選擇場景");
+        return;
+      }
+      
+      var valueStr =$('#likeChoose').val();
+
+      //POST
+      var settings = {
+          "url": "https://chatapp.jujujujuicy.com/api/v1/temp",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "data": "{\r\n    \"Key\": \"likeScenes\",\r\n    \"Value\": " + valueStr + ",\r\n    \"Comment\": 0\r\n}",
       };
       console.log(settings);
       $.ajax(settings)
